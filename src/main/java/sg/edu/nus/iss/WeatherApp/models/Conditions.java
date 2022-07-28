@@ -20,7 +20,6 @@ public class Conditions {
     public static Conditions createJson(JsonObject o){
         Conditions c = new Conditions();
         c.description = "%S - %s".formatted(o.getString("main"), o.getString("description"));
-        logger.info("Weather api temp > " + o.getString("temp"));
         return c;
     }
     
