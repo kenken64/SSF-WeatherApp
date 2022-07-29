@@ -34,13 +34,6 @@ public class Weather {
     public List<Conditions> getConditions(){ return conditions; }
     public void setConditions(List<Conditions> conditions){this.conditions = conditions;}
 
-    public void addCondition(String description , String icon){
-        Conditions c = new Conditions();
-        c.setDescription(description);
-        c.setIcon(icon);
-        conditions.add(c);
-    }
-
     public static Weather create(String json) throws IOException{
         Weather w = new Weather();
         try(InputStream is = new ByteArrayInputStream(json.getBytes())) {

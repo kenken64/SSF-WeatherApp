@@ -21,8 +21,10 @@ public class WeatherController {
     @GetMapping
     public String getWeather(@RequestParam(required = true) String city, Model model){
         Optional<Weather> opt = weatherSvc.getWeather(city);
-        if(opt.isEmpty())
+        if(opt.isEmpty()){
+            model.addAttribute("weather", new Weather());
             return "weather";
+        }
 
         model.addAttribute("weather", opt.get());
         return "weather";
