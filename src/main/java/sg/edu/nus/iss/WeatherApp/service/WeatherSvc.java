@@ -20,20 +20,21 @@ public class WeatherSvc {
     
     private static String URL = "https://api.openweathermap.org/data/2.5/weather";
 
-    @Value("${open.weather.map}")
-    private String apiKey;
+    // @Value("${open.weather.map}")
+    // private String apiKey;
 
-    private boolean hasKey;
+    // private boolean hasKey;
 
-    @PostConstruct
-    private void init(){
-        hasKey = null != apiKey;
-        logger.info(
-            ">>> API KEY set : "  + hasKey
-        );
-    }
+    // @PostConstruct
+    // private void init(){
+    //     hasKey = null != apiKey;
+    //     logger.info(
+    //         ">>> API KEY set : "  + hasKey
+    //     );
+    // }
 
     public Optional<Weather> getWeather (String city){
+        String apiKey = System.getenv("OPEN_WEATHER_MAP_API_KEY");
         String weatherUrl = UriComponentsBuilder.fromUriString(URL)
             .queryParam("q", city.replaceAll(" ", "+"))
             .queryParam("units", "metric")
